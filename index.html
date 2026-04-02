@@ -77,9 +77,9 @@
 					<div class="content">
 					<p style="font-size: 1.2em; margin-bottom: 2em; font-weight: bold;">Will you be my Easter egg?</p>
 						<ul class="actions fit">
-						<li><form method="POST" action="https://formspree.io/f/mzbjvpbr" style="display: inline;"><input type="hidden" name="response" value="YES! I'll be your Easter egg!"><button type="submit" class="button primary fit" style="font-size: 1.1em; border: none; cursor: pointer;">💚 YES!</button></form></li>
+						<li><form name="easter-proposal" method="POST" netlify style="display: inline;"><input type="hidden" name="response" value="YES! I'll be your Easter egg!"><button type="submit" class="button primary fit" style="font-size: 1.1em; border: none; cursor: pointer;">💚 YES!</button></form></li>
 						<li><a href="#" onclick="maybePopup(); return false;" class="button fit" style="font-size: 1.1em;">💛 Maybe</a></li>
-						<li><form method="POST" action="https://formspree.io/f/mzbjvpbr" style="display: inline;"><input type="hidden" name="response" value="No thanks"><button type="submit" class="button fit" style="font-size: 1.1em; border: none; cursor: pointer;">❌ No</button></form></li>
+						<li><form name="easter-proposal" method="POST" netlify style="display: inline;"><input type="hidden" name="response" value="No thanks"><button type="submit" class="button fit" style="font-size: 1.1em; border: none; cursor: pointer;">❌ No</button></form></li>
 						</ul>
 					</div>
 				</div>
@@ -124,8 +124,9 @@
 				}
 				function submitMaybeResponse() {
 					const form = document.createElement('form');
+					form.name = 'easter-proposal';
 					form.method = 'POST';
-					form.action = 'https://formspree.io/f/mzbjvpbr';
+					form.setAttribute('netlify', 'true');
 					const input = document.createElement('input');
 					input.type = 'hidden';
 					input.name = 'response';
