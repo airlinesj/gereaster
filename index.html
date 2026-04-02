@@ -77,9 +77,9 @@
 					<div class="content">
 					<p style="font-size: 1.2em; margin-bottom: 2em; font-weight: bold;">Will you be my Easter egg?</p>
 						<ul class="actions fit">
-							<li><a href="mailto:jairlines3@gmail.com?subject=YES! I'll be your Easter egg!&body=I said YES!" class="button primary fit" style="font-size: 1.1em;">💚 YES!</a></li>
-							<li><a href="#" onclick="maybePopup(); return false;" class="button fit" style="font-size: 1.1em;">💛 Maybe</a></li>
-							<li><a href="mailto:jairlines3@gmail.com?subject=No thanks&body=They said no..." class="button fit" style="font-size: 1.1em;">❌ No</a></li>
+						<li><form method="POST" action="https://formspree.io/f/mzbjvpbr" style="display: inline;"><input type="hidden" name="response" value="YES! I'll be your Easter egg!"><button type="submit" class="button primary fit" style="font-size: 1.1em; border: none; cursor: pointer;">💚 YES!</button></form></li>
+						<li><a href="#" onclick="maybePopup(); return false;" class="button fit" style="font-size: 1.1em;">💛 Maybe</a></li>
+						<li><form method="POST" action="https://formspree.io/f/mzbjvpbr" style="display: inline;"><input type="hidden" name="response" value="No thanks"><button type="submit" class="button fit" style="font-size: 1.1em; border: none; cursor: pointer;">❌ No</button></form></li>
 						</ul>
 					</div>
 				</div>
@@ -119,8 +119,20 @@
 				function closePopup() {
 					document.getElementById('maybePopup').style.display = 'none';
 					setTimeout(() => {
-						window.location.href = 'mailto:jairlines3@gmail.com?subject=Maybe - I said maybe!&body=They said maybe... I'll take that for a yes!';
+						submitMaybeResponse();
 					}, 300);
+				}
+				function submitMaybeResponse() {
+					const form = document.createElement('form');
+					form.method = 'POST';
+					form.action = 'https://formspree.io/f/mzbjvpbr';
+					const input = document.createElement('input');
+					input.type = 'hidden';
+					input.name = 'response';
+					input.value = 'Maybe - I said maybe!';
+					form.appendChild(input);
+					document.body.appendChild(form);
+					form.submit();
 				}
 			</script>
 
